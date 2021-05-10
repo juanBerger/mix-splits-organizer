@@ -12,7 +12,6 @@ test/
 test_source/
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/

@@ -1,16 +1,17 @@
 
-from tkinter import Tk, Text, TOP, BOTH, X, N, LEFT, Canvas, PhotoImage
-from tkinter.ttk import Frame, Label, Entry, Button
+from tkinter import Tk, Text, TOP, BOTH, X, N, LEFT, Canvas, PhotoImage, HORIZONTAL
+from tkinter.ttk import Frame, Label, Entry, Button, Progressbar
 from tkinter import filedialog
 import sorter as Sorter
 
 class MixSplitsOrganizer(Frame):
     
-    def __init__(self):
+    def __init__(self, window):
         super().__init__()
         self.InitUI()
         self.folder_selected = None
         self.SorterInstance = None
+        self.root = window
     
     def PrintCallBack(self, message):
         self.entry1.delete(0, 'end')
@@ -19,15 +20,20 @@ class MixSplitsOrganizer(Frame):
 
     def SelectPath(self):
         self.folder_selected = filedialog.askdirectory()
-        self.entry1.delete(0, 'end')
-        self.entry1.insert(0, self.folder_selected)
-        self.Go()
+        if (self.folder_selected):
+            self.entry1.delete(0, 'end')
+            self.entry1.insert(0, self.folder_selected)
+            self.Go()
 
     def UndoSort(self): 
-        self.SorterInstance.UndoSort(self.folder_selected)
+        message = self.SorterInstance.UndoSort(self.folder_selected)
+        self.entry1.delete(0, 'end')
+        self.entry1.insert(0, message)
 
     def Zip(self):
-        self.SorterInstance.ZipFolders()
+        message = self.SorterInstance.ZipFolders()
+        self.entry1.delete(0, 'end')
+        self.entry1.insert(0, message)
 
     def Go(self):
         if self.folder_selected is not None:
@@ -70,11 +76,18 @@ class MixSplitsOrganizer(Frame):
         zip_folders = Button(frame3, text='Zip Folders', command = self.Zip)
         zip_folders.pack(side=LEFT, padx=5, pady=5)
 
+        # -- Zip Progress -- #
+        #frame4 = Frame(self)
+        #frame4.pack(fill=X)
+
+        #self.progress = Progressbar(frame4, orient=HORIZONTAL, length = 400, mode='determinate')
+        #self.progress.pack(side=LEFT, padx=5, pady=5)
+
 
 def Main():
     window = Tk()
     window.geometry('500x200')
-    app = MixSplitsOrganizer()
+    app = MixSplitsOrganizer(window)
     window.mainloop()
 
 if __name__ == '__main__':

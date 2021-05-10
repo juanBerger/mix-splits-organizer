@@ -155,23 +155,35 @@ class Sorter():
         for fo in self.completed_folder_objects:
             name = self.base_path + '/' + fo[0] + 'MixSplits'
             #if [f for f in os.listdir(name) if not f.startswith('.')] == []:
-            os.rename(name, name + '_____TO_BE_DELETED')
+            os.rename(name, name + '_____IM_EMPTY_NOW__DELETE_ME')
+        
+        return 'Undo Complete!'
 
+    '''
     def make_archive(self, source, destination):
+        
         base = os.path.basename(destination)
         name = base.split('.')[0]
         format = base.split('.')[1]
         archive_from = os.path.dirname(source)
         archive_to = os.path.basename(source.strip(os.sep))
+        print(archive_to)
         shutil.make_archive(name, format, archive_from, archive_to)
-        shutil.move('%s.%s'%(name,format), destination)
+        #shutil.move('%s.%s'%(name,format), destination)
+    '''
 
     def ZipFolders(self):
+        
         # Dont allow zipping unitl organizing is done
         if len(self.completed_folder_objects) > 0:
             for fo in self.completed_folder_objects:
                 name = self.base_path + '/' + fo[0] + 'MixSplits'
-                self.make_archive(name, name + '.zip')
+                shutil.make_archive(name, 'zip', root_dir=self.base_path, base_dir=name)
+
+            return "Zipping Complete"
+
+        else:
+            return 'Wait until organizing is finished'
 
     def CreateFolders(self, fo, base_path):
         
