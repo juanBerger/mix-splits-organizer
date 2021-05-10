@@ -4,7 +4,6 @@ from tkinter.ttk import Frame, Label, Entry, Button
 from tkinter import filedialog
 import sorter as Sorter
 
-
 class MixSplitsOrganizer(Frame):
     
     def __init__(self):
@@ -46,17 +45,6 @@ class MixSplitsOrganizer(Frame):
         
         self.master.title('Mix + Splits Organizer')
         self.pack(fill=BOTH, expand=True)
-
-        '''
-        frame_base = Frame(self)
-        frame_base.pack()
-        C = Canvas(frame_base, bg='blue')
-        img = PhotoImage(file='/Users/asm/Desktop/color_1.png')
-        background_label = Label(frame_base, image=img)
-        background_label.place(x=0, y=0, relwidth=1, relheight=1)
-        C.pack()
-        '''
-        
 
         # -- Choose A Path -- #
         frame1 = Frame(self)

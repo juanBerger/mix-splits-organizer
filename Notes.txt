@@ -5,7 +5,6 @@ pyinstaller MixSplitsOrganizer.py --windowed --onefile
 
 [Use the unix executable from this]
 
-
 TO DO:
 Make a .app with codesigning
 Remember last opened directory

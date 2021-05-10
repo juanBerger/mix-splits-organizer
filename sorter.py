@@ -111,7 +111,7 @@ class Sorter():
         else:
             return 'No Common Elements'
 
-
+    # folder_objects = [[name, [files]],]
     def Distribute(self, folder_object, fo_file_path, fo_file):
         
         # Check if surround, then check which file_type it is and place in corresponding folder
@@ -135,7 +135,6 @@ class Sorter():
 
         # When stereo only, stereo files often don't have stereo signatures. 
         # In that case if there is no 'FUL' all files go in OLV. If there is a 'FUL' all files go in TV/Stereo except OLV which goes in 'OLV' (if it exists)
-
         for file_type in folder_object[2]:
             if file_type == 'FUL': # This essentially checks if there are any 'FUL's anywhere for this folder_object
                 if 'OLV' not in fo_file:
@@ -211,7 +210,9 @@ class Sorter():
 
         return
     
+    # this is where we start
     def Sort(self):
+
         folder_objects, all_files = self.CreateFolderObjects(self.base_path)
         folder_objects = self.AddFiles(folder_objects, all_files)
 
