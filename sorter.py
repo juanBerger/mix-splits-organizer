@@ -1,4 +1,4 @@
-import os
+import os, zipfile
 import shutil
 import fnmatch
 import glob
@@ -178,7 +178,8 @@ class Sorter():
         if len(self.completed_folder_objects) > 0:
             for fo in self.completed_folder_objects:
                 name = self.base_path + '/' + fo[0] + 'MixSplits'
-                shutil.make_archive(name, 'zip', root_dir=self.base_path, base_dir=name)
+                base_d = './' + fo[0] + 'MixSplits'
+                shutil.make_archive(name, 'zip', root_dir=self.base_path, base_dir=base_d)
 
             return "Zipping Complete"
 
