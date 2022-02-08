@@ -1,7 +1,13 @@
 # mix-splits-organizer
 Organizes deliverables into folders for DAP
 
-# Build Instrucions
+
+# Cmd line version
+- Supply base path as argument
+
+
+
+# Build Instrucions - Old UI Version
 - pyinstaller MixSplitsOrganizer.py --windowed --onefile
 - pip3 install pyinstaller if you need to
 - Have to build on Catalina 10.15 or above to avoid logout issue
@@ -11,4 +17,4 @@ Organizes deliverables into folders for DAP
 
 # Some Assumptions
 - Stereo files always have some stereo file indicator in the presence of 5.1
-- In the case where there is no stereo signature, FUL indicates TV/Stereo. Put another way, OLVs have to be named 'OLV'. This means that if a group of      files has no surround and no FUL and no OLV, it will fail (there is no other basis for determining if the files are TV or OLV)
+- In the case where there is no stereo signature, FUL indicates TV/Stereo. SO OLVs have to always have 'OLV'
