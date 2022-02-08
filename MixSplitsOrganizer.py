@@ -8,6 +8,7 @@ class MixSplitsOrganizer(Frame):
     
     def __init__(self, window):
         super().__init__()
+        
         self.InitUI()
         self.folder_selected = None
         self.SorterInstance = None
@@ -37,6 +38,7 @@ class MixSplitsOrganizer(Frame):
 
     def Go(self):
         if self.folder_selected is not None:
+            
             self.SorterInstance = Sorter.Sorter(self.folder_selected)
             message = self.SorterInstance.Sort()
             self.entry1.delete(0, 'end')
@@ -75,13 +77,6 @@ class MixSplitsOrganizer(Frame):
 
         zip_folders = Button(frame3, text='Zip Folders', command = self.Zip)
         zip_folders.pack(side=LEFT, padx=5, pady=5)
-
-        # -- Zip Progress -- #
-        #frame4 = Frame(self)
-        #frame4.pack(fill=X)
-
-        #self.progress = Progressbar(frame4, orient=HORIZONTAL, length = 400, mode='determinate')
-        #self.progress.pack(side=LEFT, padx=5, pady=5)
 
 
 def Main():
